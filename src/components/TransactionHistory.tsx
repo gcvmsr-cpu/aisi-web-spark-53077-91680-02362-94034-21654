@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import ViewCodesDialog from "@/components/ViewCodesDialog";
+import DashboardViewCodesDialog from "@/components/DashboardViewCodesDialog";
 import { useState } from "react";
 
 interface Transaction {
@@ -165,15 +165,11 @@ export function TransactionHistory() {
       </div>
 
       {selectedTransaction && (
-        <ViewCodesDialog
+        <DashboardViewCodesDialog
           open={!!selectedTransaction}
           onOpenChange={(open) => !open && setSelectedTransaction(null)}
           productName={selectedTransaction.productName}
           codes={generateCodesForTransaction(selectedTransaction)}
-          onDeleteCode={(codeId) => {
-            console.log("Delete code:", codeId);
-            // Handle code deletion if needed
-          }}
         />
       )}
     </section>
