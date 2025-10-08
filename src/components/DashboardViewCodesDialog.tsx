@@ -100,7 +100,6 @@ const DashboardViewCodesDialog = ({ open, onOpenChange, productName, codes }: Da
                 <TableRow className="bg-muted/50">
                   <TableHead>Code</TableHead>
                   <TableHead>Description</TableHead>
-                  <TableHead>Report</TableHead>
                   <TableHead className="text-center">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -109,14 +108,6 @@ const DashboardViewCodesDialog = ({ open, onOpenChange, productName, codes }: Da
                   <TableRow key={codeItem.id} className="hover:bg-muted/30">
                     <TableCell className="font-mono">{codeItem.code}</TableCell>
                     <TableCell>{codeItem.description || '-'}</TableCell>
-                    <TableCell>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                      >
-                        Not Working
-                      </Button>
-                    </TableCell>
                     <TableCell className="text-center">
                       <Button
                         variant="ghost"
