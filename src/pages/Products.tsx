@@ -479,7 +479,6 @@ const Products = () => {
           onOpenChange={(open) => setViewCodesDialog({ open, product: viewCodesDialog.product })}
           productName={viewCodesDialog.product?.name || ""}
           codes={productCodes[viewCodesDialog.product?.id] || []}
-          onDeleteCode={(codeId) => handleDeleteCode(viewCodesDialog.product?.id, codeId)}
         />
       </div>
     </SidebarProvider>
