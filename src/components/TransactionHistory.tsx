@@ -170,6 +170,10 @@ export function TransactionHistory() {
           onOpenChange={(open) => !open && setSelectedTransaction(null)}
           productName={selectedTransaction.productName}
           codes={generateCodesForTransaction(selectedTransaction)}
+          onDeleteCode={(codeId) => {
+            console.log("Delete code:", codeId);
+            // Handle code deletion if needed
+          }}
         />
       )}
     </section>

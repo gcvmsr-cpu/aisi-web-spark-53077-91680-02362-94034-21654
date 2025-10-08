@@ -33,7 +33,7 @@ const Dashboard = () => {
                   alt="gc4u Logo" 
                   className="w-10 h-10 rounded-lg hover:scale-110 transition-all duration-300 cursor-pointer"
                 />
-                <span className="text-2xl font-bold">gc4u</span>
+                <span className="text-2xl font-bold">Dashboard</span>
               </div>
 
               {/* Transaction History Section */}
