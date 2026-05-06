@@ -41,7 +41,7 @@ const Balance = () => {
       <div className="min-h-screen bg-background text-foreground w-full">
         <div className="flex w-full">
           {/* Main Content */}
-          <main className="flex-1 min-w-0 p-6 lg:p-8">
+          <main className="flex-1 p-6 lg:p-8">
             <div className="max-w-7xl mx-auto">
               {/* Mobile sidebar trigger */}
               <div className="lg:hidden mb-6 flex justify-between items-center">

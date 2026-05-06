@@ -86,9 +86,9 @@ export function TransactionHistory() {
   };
 
   return (
-    <section className="mb-16 w-full min-w-0">
-      <div className="bg-card border border-border rounded-lg overflow-x-auto">
-        <Table className="min-w-[900px]">
+    <section className="mb-16">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
+        <Table>
           <TableHeader>
             <TableRow className="bg-muted/50 hover:bg-muted/50">
               <TableHead className="font-semibold text-muted-foreground">ID</TableHead>

@@ -91,8 +91,7 @@ export function RecentProducts() {
         <p className="text-muted-foreground">Most popular gift cards by sales</p>
       </div>
       
-      <div className="bg-card border border-border rounded-lg overflow-x-auto">
-        <div className="min-w-[800px]">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
         {/* Header */}
         <div className="grid grid-cols-12 gap-4 p-4 bg-muted/50 border-b border-border text-sm font-medium text-muted-foreground">
           <div className="col-span-6">Product name</div>
@@ -175,7 +174,6 @@ export function RecentProducts() {
               </div>
             </div>
           ))}
-        </div>
         </div>
       </div>
     </section>
