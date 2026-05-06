@@ -7,60 +7,65 @@ const popularProducts = [
     title: "Roblox 10 AUD | Australia",
     originalPrice: "$6.59",
     price: "$6.39",
-    discount: "SAVE 5.00%",
     bonus: "$0.01",
     sold: "8059",
     image: "/lovable-uploads/6658eac4-9d15-43da-bd1a-987db64cdf54.png",
     seller: "BSV.Official.Store",
-    category: "Gaming"
+    category: "Gaming",
+    country: "Australia",
+    countryFlag: "🇦🇺"
   },
   {
     id: 3,
     title: "Xbox Game Pass Ultimate / 1 Month LATAM",
     originalPrice: "$20.00",
     price: "$9.45",
-    discount: "SAVE 52.75%",
     bonus: "$0.05",
     sold: "4537",
     image: "/lovable-uploads/6658eac4-9d15-43da-bd1a-987db64cdf54.png",
     seller: "liquid2606",
-    category: "Gaming"
+    category: "Gaming",
+    country: "LATAM",
+    countryFlag: "🌎"
   },
   {
     id: 2,
     title: "PSN gift card India 1000 INR",
     originalPrice: "$1,000.00",
     price: "$11.24",
-    discount: "SAVE 98.88%",
     bonus: "$0.01",
     sold: "4148",
     image: "/lovable-uploads/6658eac4-9d15-43da-bd1a-987db64cdf54.png",
     seller: "shaman4ik20060",
-    category: "Gaming"
+    category: "Gaming",
+    country: "India",
+    countryFlag: "🇮🇳"
   },
   {
     id: 1,
     title: "PlayStation Network PSN 1000 INR (INDIA)",
     originalPrice: "$15.00",
     price: "$11.55",
-    discount: "SAVE 24.33%",
     bonus: "$0.03",
     sold: "3107",
     image: "/lovable-uploads/6658eac4-9d15-43da-bd1a-987db64cdf54.png",
     seller: "liquid2606",
-    category: "Gaming"
+    category: "Gaming",
+    country: "India",
+    countryFlag: "🇮🇳"
   },
   {
     id: 5,
     title: "Steam wallet 250 PHP | Philippines (stock)",
     originalPrice: "",
     price: "$5.74",
-    discount: "",
     bonus: "$0.01",
     sold: "2445",
     image: "/lovable-uploads/6658eac4-9d15-43da-bd1a-987db64cdf54.png",
     seller: "BSV.Official.Store",
-    category: "Gaming"
+    category: "Gaming",
+    country: "Philippines",
+    countryFlag: "🇵🇭"
   }
 ];
 
@@ -113,6 +118,10 @@ export function RecentProducts() {
                   <h3 className="font-medium text-card-foreground line-clamp-2">
                     {product.title}
                   </h3>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <span className="text-base leading-none">{product.countryFlag}</span>
+                    <span className="text-xs text-muted-foreground">{product.country}</span>
+                  </div>
                 </div>
               </div>
               
@@ -126,11 +135,6 @@ export function RecentProducts() {
                 <span className="text-lg font-bold text-orange-500">
                   {product.price}
                 </span>
-                {product.discount && (
-                  <Badge variant="secondary" className="text-xs bg-green-500/10 text-green-600 mt-1">
-                    {product.discount}
-                  </Badge>
-                )}
               </div>
               
               {/* Sold */}
