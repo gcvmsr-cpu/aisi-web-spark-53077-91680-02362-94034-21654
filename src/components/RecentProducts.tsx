@@ -176,6 +176,7 @@ export function RecentProducts() {
             </div>
           ))}
         </div>
+        </div>
       </div>
     </section>
   );
