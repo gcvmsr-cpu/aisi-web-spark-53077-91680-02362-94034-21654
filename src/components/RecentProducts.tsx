@@ -118,6 +118,10 @@ export function RecentProducts() {
                   <h3 className="font-medium text-card-foreground line-clamp-2">
                     {product.title}
                   </h3>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <span className="text-base leading-none">{product.countryFlag}</span>
+                    <span className="text-xs text-muted-foreground">{product.country}</span>
+                  </div>
                 </div>
               </div>
               
@@ -131,11 +135,6 @@ export function RecentProducts() {
                 <span className="text-lg font-bold text-orange-500">
                   {product.price}
                 </span>
-                {product.discount && (
-                  <Badge variant="secondary" className="text-xs bg-green-500/10 text-green-600 mt-1">
-                    {product.discount}
-                  </Badge>
-                )}
               </div>
               
               {/* Sold */}
