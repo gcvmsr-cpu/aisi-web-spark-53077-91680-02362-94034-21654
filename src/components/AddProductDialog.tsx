@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { fileToDataUrl, type Product } from "@/lib/products-store";
 
 interface AddProductDialogProps {
   onAddProduct: (product: any) => void;
@@ -100,7 +101,7 @@ const AddProductDialog = ({ onAddProduct }: AddProductDialogProps) => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!isFormValid()) {
@@ -121,7 +122,9 @@ const AddProductDialog = ({ onAddProduct }: AddProductDialogProps) => {
       sold: 0,
       available: 100,
       paymentSystems: ["Google Pay", "PayPal"],
-      image: formData.image ? URL.createObjectURL(formData.image) : "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80&h=80&fit=crop&crop=center"
+      image: formData.image ? await fileToDataUrl(formData.image) : "/placeholder.svg",
+      seller: "You",
+      uploadedImage: Boolean(formData.image)
     };
 
     onAddProduct(newProduct);

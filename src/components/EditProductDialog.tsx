@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { fileToDataUrl } from "@/lib/products-store";
 
 interface EditProductDialogProps {
   open: boolean;
@@ -115,7 +116,7 @@ const EditProductDialog = ({ open, onOpenChange, onEditProduct, product }: EditP
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!isFormValid()) {
@@ -131,7 +132,8 @@ const EditProductDialog = ({ open, onOpenChange, onEditProduct, product }: EditP
       description: formData.description,
       price: parseFloat(formData.yourPrice),
       productValue: parseFloat(formData.productValue),
-      image: formData.image ? URL.createObjectURL(formData.image) : product.image
+      image: formData.image ? await fileToDataUrl(formData.image) : product.image,
+      uploadedImage: formData.image ? true : product.uploadedImage
     };
 
     onEditProduct(updatedProduct);

@@ -23,103 +23,11 @@ import DisableProductDialog from "@/components/DisableProductDialog";
 import EditProductDialog from "@/components/EditProductDialog";
 import ViewCodesDialog from "@/components/ViewCodesDialog";
 import AddCodeDialog from "@/components/AddCodeDialog";
+import { useProducts, type Product } from "@/lib/products-store";
 
-const initialProducts = [
-  { 
-    id: 68405, 
-    name: "Roblox Digital Card - 400 Robux Global", 
-    category: "Roblox", 
-    sold: 11605, 
-    available: 145, 
-    price: 6.40, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal"],
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=80&h=80&fit=crop&crop=center",
-    productValue: 8.00,
-    description: "Premium Roblox digital card with 400 Robux for global use. Instant delivery upon purchase.",
-    region: "Global"
-  },
-  { 
-    id: 109898, 
-    name: "Roblox Digital Card - 800 Robux Global", 
-    category: "Roblox", 
-    sold: 6426, 
-    available: 88, 
-    price: 9.50, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal"],
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 2, 
-    name: "League of Legends RP Card", 
-    category: "Riot Games", 
-    sold: 4537, 
-    available: 120, 
-    price: 25.00, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "Stripe"],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 3, 
-    name: "Minecraft Java Edition", 
-    category: "Minecraft", 
-    sold: 3148, 
-    available: 95, 
-    price: 26.95, 
-    currency: "USD",
-    paymentSystems: ["PayPal", "Stripe"],
-    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 4, 
-    name: "Xbox Game Pass Ultimate", 
-    category: "Xbox", 
-    sold: 2107, 
-    available: 200, 
-    price: 15.00, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal"],
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 5, 
-    name: "Overwatch Credits", 
-    category: "Overwatch", 
-    sold: 1850, 
-    available: 75, 
-    price: 19.99, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal"],
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 6, 
-    name: "Walmart Gift Card", 
-    category: "Walmart", 
-    sold: 3420, 
-    available: 300, 
-    price: 50.00, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal", "Stripe"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80&h=80&fit=crop&crop=center"
-  },
-  { 
-    id: 7, 
-    name: "Amazon Gift Card", 
-    category: "Amazon", 
-    sold: 5280, 
-    available: 450, 
-    price: 25.00, 
-    currency: "USD",
-    paymentSystems: ["Google Pay", "PayPal", "Stripe"],
-    image: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=80&h=80&fit=crop&crop=center"
-  },
-];
 
 const Products = () => {
-  const [products, setProducts] = useState(initialProducts);
+  const { products, addProduct, updateProduct, deleteProduct, disableProduct } = useProducts();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewMode, setViewMode] = useState("list");
@@ -148,25 +56,21 @@ const Products = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const handleAddProduct = (newProduct: any) => {
-    setProducts([...products, newProduct]);
+  const handleAddProduct = (newProduct: Product) => {
+    addProduct(newProduct);
   };
 
-  const handleEditProduct = (updatedProduct: any) => {
-    setProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
+  const handleEditProduct = (updatedProduct: Product) => {
+    updateProduct(updatedProduct);
   };
 
   const handleDeleteProduct = () => {
-    setProducts(products.filter(p => p.id !== deleteDialog.product.id));
+    deleteProduct(deleteDialog.product.id);
     setDeleteDialog({ open: false, product: null });
   };
 
   const handleDisableProduct = () => {
-    setProducts(products.map(p => 
-      p.id === disableDialog.product.id 
-        ? { ...p, available: 0, disabled: true }
-        : p
-    ));
+    disableProduct(disableDialog.product.id);
     setDisableDialog({ open: false, product: null });
   };
 
