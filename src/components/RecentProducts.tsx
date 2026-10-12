@@ -168,7 +168,7 @@ export function RecentProducts() {
               
               {/* Buy Button */}
               <div className="col-span-1 flex items-center justify-center">
-                <button className="px-6 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 hover:scale-105 transition-all duration-300 text-sm font-medium shadow-md">
+                <button className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-sm font-medium shadow-md">
                   Buy
                 </button>
               </div>
