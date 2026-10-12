@@ -13,10 +13,12 @@ import Messages from "./pages/Messages";
 import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
+import { ProductsProvider } from "./lib/products-store";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  <ProductsProvider>
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <TooltipProvider>
@@ -38,6 +40,7 @@ const App = () => (
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
+  </ProductsProvider>
 );
 
 export default App;
