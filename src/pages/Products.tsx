@@ -23,10 +23,11 @@ import DisableProductDialog from "@/components/DisableProductDialog";
 import EditProductDialog from "@/components/EditProductDialog";
 import ViewCodesDialog from "@/components/ViewCodesDialog";
 import AddCodeDialog from "@/components/AddCodeDialog";
+import { useProducts, type Product } from "@/lib/products-store";
 
 
 const Products = () => {
-  const [products, setProducts] = useState(initialProducts);
+  const { products, addProduct, updateProduct, deleteProduct, disableProduct } = useProducts();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewMode, setViewMode] = useState("list");
@@ -55,25 +56,21 @@ const Products = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const handleAddProduct = (newProduct: any) => {
-    setProducts([...products, newProduct]);
+  const handleAddProduct = (newProduct: Product) => {
+    addProduct(newProduct);
   };
 
-  const handleEditProduct = (updatedProduct: any) => {
-    setProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
+  const handleEditProduct = (updatedProduct: Product) => {
+    updateProduct(updatedProduct);
   };
 
   const handleDeleteProduct = () => {
-    setProducts(products.filter(p => p.id !== deleteDialog.product.id));
+    deleteProduct(deleteDialog.product.id);
     setDeleteDialog({ open: false, product: null });
   };
 
   const handleDisableProduct = () => {
-    setProducts(products.map(p => 
-      p.id === disableDialog.product.id 
-        ? { ...p, available: 0, disabled: true }
-        : p
-    ));
+    disableProduct(disableDialog.product.id);
     setDisableDialog({ open: false, product: null });
   };
 
